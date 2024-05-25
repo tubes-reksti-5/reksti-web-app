@@ -17,6 +17,11 @@ const config: Config = {
         satoshi: ['Satoshi', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
+      colors: {
+        office_gray: '#575757',
+        darker_gray: "#444444",
+        lighter_gray: "#E1E1E1"
+      },
     },
   },
   plugins: [],
