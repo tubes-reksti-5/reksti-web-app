@@ -83,6 +83,10 @@
   @apply mt-2 text-4xl font-extrabold leading-[1.2] sm:text-2xl ml-1 font-inter;
 }
 
+.subtext {
+  @apply mt-2 text-xl font-extrabold leading-[1.2] sm:text-xl ml-1 font-inter;
+}
+
 /* Section for all the text colors */
 
 /* Alignment types*/

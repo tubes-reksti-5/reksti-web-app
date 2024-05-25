@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link'
 
 export default function Home() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -58,12 +59,12 @@ export default function Home() {
             </div>
 
             {/* Log In Button */}
-            <button
-              type="submit"
-              className="w-full bg-darker_gray text-white py-2 px-4 rounded-md hover:bg-lighter_gray hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-8"
-            >
-              Log In
-            </button>
+            <Link href="./room_page/">
+              <button className="w-full bg-darker_gray text-white py-2 px-4 rounded-md hover:bg-lighter_gray hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-8">
+                Log In
+              </button>
+            </Link>
+            
 
           </form>
         </div>
