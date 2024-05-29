@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 interface Room {
   name: string;
@@ -27,7 +28,12 @@ const RoomTable: React.FC<RoomTableProps> = ({ rooms }) => {
       <tbody className="bg-white divide-y divide-gray-200">
         {rooms.map((room, index) => (
           <tr key={index}>
-            <td className="px-6 py-4 whitespace-nowrap">{room.name}</td>
+            {/* Make Room Name clickable */}
+            <td className="px-6 py-4 whitespace-nowrap">
+              <Link legacyBehavior href={`/pages/room_page/${room.name}`} passHref>
+                <a className="text-blue-500 hover:underline">{room.name}</a>
+              </Link>
+            </td>
             <td className="px-6 py-4 whitespace-nowrap">{room.status}</td>
             <td className="px-6 py-4 whitespace-nowrap">{room.occupancy}</td>
             <td className="px-6 py-4 whitespace-nowrap">{room.timeLeft}</td>

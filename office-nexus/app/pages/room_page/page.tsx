@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
-import PercentageWheel from "../components/percentageWheel";
-import RoomTable from "../components/roomTable";
+import PercentageWheel from "../../components/percentageWheel";
+import RoomTable from "../../components/roomTable";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ export default function Rooms() {
   // Sample room data
   const [rooms, setRooms] = useState([
     {
-      name: 'Room 1',
+      name: 'Ruang Pertemuan',
       status: 'Used',
       occupancy: '3/10',
       timeLeft: '1h 30m',
@@ -117,7 +117,7 @@ export default function Rooms() {
           {/* Content of the Left Side of Recap Div */}
           {/* Split the div into two: info and percentage wheel */}
           <div className="flex flex-col w-3/5"> 
-            <h1 className="headline_subtext pl-2 pt-2">Monday, 9 December 2024</h1> 
+            <h1 className="headline_subtext pl-4 pt-4">Monday, 9 December 2024</h1> 
             {/* Rooms Used and Rooms Vacant containers */}
             <div className="flex flex-row m-2 mt-4"> 
               {/* Rooms Used */}

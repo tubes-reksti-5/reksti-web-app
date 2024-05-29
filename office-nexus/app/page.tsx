@@ -59,7 +59,7 @@ export default function Home() {
             </div>
 
             {/* Log In Button */}
-            <Link href="./room_page/">
+            <Link href="./pages/room_page/">
               <button className="w-full bg-darker_gray text-white py-2 px-4 rounded-md hover:bg-lighter_gray hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-8">
                 Log In
               </button>
