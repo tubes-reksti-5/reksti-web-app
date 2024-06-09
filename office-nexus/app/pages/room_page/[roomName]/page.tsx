@@ -2,7 +2,7 @@
 import { useRouter, useSearchParams, useParams } from "next/navigation";
 import Image from "next/image";
 import RoomHistoryTable from "../../../components/roomHistoryTable";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function RoomPage() {
@@ -29,6 +29,80 @@ export default function RoomPage() {
             reservedBy: "Raditya Azka"
         },
     ]);
+
+  // State to hold room data
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const response = await fetch('/api/room');
+        const data = await response.json();
+        
+        // Log the data to verify its structure
+        console.log("Fetched data:", data);
+        
+        // Map the fetched data to the expected structure
+        const formattedRooms = data.data.map((room: any) => ({
+          number: room.room_number,      
+          floor: room.room_floor,
+          type: room.room_type,
+          capacity: room.room_capacity,
+          name: room.room_name
+        }));
+        
+        setRooms(formattedRooms);
+      } catch (error) {
+        console.error("Failed to fetch rooms:", error);
+      }
+    };
+  
+    fetchRooms();
+  }, []);
+
+  
+    // State buat add room
+    const [roomNumber, setRoomNumber] = useState("");
+    const [roomFloor, setRoomFloor] = useState("");
+    const [roomNameNew, setRoomName] = useState("");
+    const [roomType, setRoomType] = useState("");
+    const [capacity, setCapacity] = useState("");
+    
+
+    const handleAddRoom = async () => {
+        const newRoom = {
+        room_number: roomName,
+        room_floor: roomFloor,
+        room_name: roomNameNew,
+        room_type: roomType,
+        room_capacity: capacity,
+        };
+    
+        try {
+        const response = await fetch('/api/room', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newRoom),
+        });
+    
+        if (response.ok) {
+            // Clear the form
+            setRoomNumber("");
+            setRoomFloor("");
+            setRoomName("");
+            setRoomType("");
+            setCapacity("");
+            // Refresh the room list
+            window.location.reload()
+        } else {
+            console.error("Failed to add room:", await response.json());
+        }
+        } catch (error) {
+        console.error("Failed to add room:", error);
+        }
+    };
 
     return (
         <div className="flex h-screen bg-lighter_gray">
@@ -114,43 +188,65 @@ export default function RoomPage() {
 
                     {/* Add Room Div */}
                     <div className="w-2/5 bg-white rounded-lg ml-3 p-4 pt-0 flex flex-col justify-between">
-                        {/* Top Div */}
+                    {/* Top Div */}
                         <div className="mb-4">
-                            <h1 className="headline_text mb-2">Room Name</h1>
+                        <h1 className="headline_text mb-2">Room Number & Room Floor</h1>
+                        <div className="flex items-center space-x-2">
                             <div className="flex items-center space-x-2">
-                                <input
-                                    type="text"
-                                    placeholder="Enter room name"
-                                    className="border border-gray-300 rounded-md p-2 w-full"
-                                />
-                                <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600">
-                                    Update
-                                </button>
+                                <h1 className="headline_subtext mb-2">Changing Room With ID: {roomName}</h1>
                             </div>
+                            <input
+                            type="text"
+                            placeholder="Enter room floor"
+                            className="border border-gray-300 rounded-md p-2 w-full"
+                            value={roomFloor} 
+                            onChange={(e) => setRoomFloor(e.target.value)} 
+                            />
+                            <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600"
+                            onClick={handleAddRoom}>
+                            Update
+                            </button>
+                        </div>
                         </div>
 
                         {/* Bottom Div */}
-                        <div className="flex space-x-2">
-                            <div className="flex flex-col w-1/2">
-                                <label className="text-gray-700 mb-1">Capacity</label>
-                                <input
-                                    type="number"
-                                    placeholder="Capacity"
-                                    className="border border-gray-300 rounded-md p-2"
-                                />
-                            </div>
-                            <div className="flex flex-col w-1/2">
-                                <label className="text-gray-700 mb-1">RFID Sensor</label>
-                                <select className="border border-gray-300 rounded-md p-2">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
+                        <div className="flex space-x-2 pr-2">
+                        <div className="flex flex-col w-1/3">
+                            <label className="text-gray-700 mb-1">Room Name</label>
+                            <input
+                            type="text"
+                            placeholder="Enter room name"
+                            className="border border-gray-300 rounded-md p-2"
+                            value={roomNameNew} 
+                            onChange={(e) => setRoomName(e.target.value)} 
+                            />
+
+                        </div>
+                        <div className="flex flex-col w-1/3">
+                            <label className="text-gray-700 mb-1">Room Type</label>
+                            <input
+                            type="text"
+                            placeholder="Enter room type"
+                            className="border border-gray-300 rounded-md p-2"
+                            value={roomType} 
+                            onChange={(e) => setRoomType(e.target.value)} 
+                            />
+                        </div>
+
+                        <div className="flex flex-col w-1/3">
+                            <label className="text-gray-700 mb-1">Capacity</label>
+                            <input
+                            type="number"
+                            placeholder="Capacity"
+                            className="border border-gray-300 rounded-md p-2"
+                            value={capacity} 
+                            onChange={(e) => setCapacity(e.target.value)}
+                            />
+                        </div>
+
                         </div>
                     </div>
+
                 </div>
                 
                 {/* Room List Div */}

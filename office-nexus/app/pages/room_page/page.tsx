@@ -170,14 +170,14 @@ export default function Rooms() {
                   placeholder="Enter room number"
                   className="border border-gray-300 rounded-md p-2 w-full"
                   value={roomNumber} 
-                  onChange={(e) => setRoomNumber(e.target.value)} // <-- ADD THIS
+                  onChange={(e) => setRoomNumber(e.target.value)} 
                 />
                 <input
                   type="text"
                   placeholder="Enter room floor"
                   className="border border-gray-300 rounded-md p-2 w-full"
-                  value={roomFloor} // <-- ADD THIS
-                  onChange={(e) => setRoomFloor(e.target.value)} // <-- ADD THIS
+                  value={roomFloor} 
+                  onChange={(e) => setRoomFloor(e.target.value)} 
                 />
                 <button className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600"
                 onClick={handleAddRoom}>

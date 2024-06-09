@@ -4,10 +4,13 @@ import Image from "next/image";
 import { useSession } from "next-auth/react"
 import NavButtonSignout from "./navButtonSignout"
 import {useEffect, useState} from "react";
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
     // ganti sama user auth beneran
     const isUserLogged = true
+    const currentPathname = usePathname()
+    console.log(currentPathname)
 
     return (
         <nav className="flex-between w-full mb-6">
@@ -26,7 +29,7 @@ const Navbar = () => {
             {/*Desktop Navigation */}
             <div className="sm:flex hidden">
                 {/* ganti ke status user logged in beneran */}
-                {isUserLogged? (
+                {currentPathname != "/"? (
                     <div className="flex-between gap-4 md:gap-8 mr-4 mt-7">
                         <NavButtonSignout/>
                     </div>
