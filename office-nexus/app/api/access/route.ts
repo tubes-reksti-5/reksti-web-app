@@ -21,3 +21,35 @@ export const GET = async (req: NextRequest) => {
     }
   }
 };
+
+export const POST = async (req: NextRequest) => {
+    try {
+      const accessData = await req.json();
+  
+      // Ensure all required fields are provided
+      const requiredFields = ["room_number", "room_floor", "user_id", "date", "start_time", "end_time"];
+      for (const field of requiredFields) {
+        if (!(field in accessData)) {
+          return NextResponse.json(
+            { message: `Missing required field: ${field}` },
+            { status: 400 }
+          );
+        }
+      }
+  
+      const { data, error } = await supabase
+        .from("RoomAccess")
+        .upsert(accessData);
+  
+      if (error) {
+        throw error;
+      }
+  
+      return NextResponse.json({ accessData }, { status: 201 });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        //console.log(err);
+        return NextResponse.json({ message: "Error", error: err.message }, { status: 500 });
+      }
+    }
+  };
