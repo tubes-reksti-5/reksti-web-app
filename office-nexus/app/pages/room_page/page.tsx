@@ -142,13 +142,13 @@ export default function Rooms() {
               {/* Rooms Used */}
               <div className="flex flex-col border border-office_gray w-1/2 h-full rounded-md m-2"> 
                 <h2 className="subtext pl-2">Rooms Used</h2>
-                <h2 className="subtext pl-2">12</h2>
+                <h2 className="subtext pl-2">6</h2>
               </div>
 
               {/* Rooms Vacant */}
               <div className="flex flex-col border border-office_gray w-1/2 h-full rounded-md m-2"> 
                 <h2 className="subtext pl-2 text">Rooms Vacant</h2>
-                <h2 className="subtext pl-2">10</h2>
+                <h2 className="subtext pl-2">2</h2>
               </div>
             </div>
           </div>
