@@ -35,7 +35,15 @@ export const POST = async (req: NextRequest) => {
     // Here you should save the sessionToken to your database and associate it with the user
     // For demonstration purposes, we're skipping this step.
 
-    const response = NextResponse.json({ message: 'Login berhasil', user }, { status: 200 });
+    const responseUser = {
+      email: user.email,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      is_admin: user.is_admin,
+      is_employee: user.is_employee
+    };
+
+    const response = NextResponse.json({ message: 'Login berhasil', user: responseUser }, { status: 200 });
     response.cookies.set('sessionToken', sessionToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
