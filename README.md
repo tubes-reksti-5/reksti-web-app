@@ -23,3 +23,12 @@ Repositori ini berisi sumber kode program untuk komponen Web App dan API dari si
 
 Atau Anda dapat mengunjungi 
 https://office-nexus.vercel.app/
+
+Gunakan akun Admin
+Admin
+email : Admin@example.com
+password : reksti1234
+
+Karyawan (Hanya bisa login di mobile app)
+email : Karyawan@example.com
+password : reksti5678
