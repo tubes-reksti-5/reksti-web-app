@@ -12,14 +12,12 @@ export default function Rooms() {
       name: 'Ruang Pertemuan',
       status: 'Used',
       occupancy: '3/10',
-      timeLeft: '1h 30m',
       reservedBy: 'Raditya Azka P.',
     },
     {
       name: 'Room 2',
       status: 'Not Used',
       occupancy: '0/8',
-      timeLeft: '-',
       reservedBy: '-',
     },
 
@@ -27,7 +25,6 @@ export default function Rooms() {
       name: 'Room 3',
       status: 'Used',
       occupancy: '5/12',
-      timeLeft: '1h 00m',
       reservedBy: 'Duke of Sawangan',
     },
 
@@ -35,7 +32,6 @@ export default function Rooms() {
       name: 'Room 4',
       status: 'Used',
       occupancy: '4/4',
-      timeLeft: '1h 00m',
       reservedBy: 'Palapa Fox',
     },
     
@@ -43,7 +39,6 @@ export default function Rooms() {
       name: 'Room 5',
       status: 'Not Used',
       occupancy: '0/8',
-      timeLeft: '-',
       reservedBy: '-',
     },
 
@@ -51,7 +46,6 @@ export default function Rooms() {
       name: 'Room 6',
       status: 'Not Used',
       occupancy: '0/12',
-      timeLeft: '-',
       reservedBy: '-',
     },
 
@@ -59,7 +53,6 @@ export default function Rooms() {
       name: 'Room 7',
       status: 'Not Used',
       occupancy: '0/10',
-      timeLeft: '-',
       reservedBy: '-',
     },
     
