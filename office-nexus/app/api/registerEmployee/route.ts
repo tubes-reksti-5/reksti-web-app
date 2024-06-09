@@ -7,8 +7,8 @@ export const POST = async (req: NextRequest) => {
     const body = await req.json();
     const { email, password, first_name, last_name, card_id } = body;
 
-    //const hashedPassword = await bcrypt.hash(password, 10);
-    const hashedPassword = password;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    //const hashedPassword = password;
 
     const { data, error } = await supabase
       .from('User')
